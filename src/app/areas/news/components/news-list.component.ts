@@ -10,6 +10,7 @@ import { NewsItemComponent } from './news-item.component';
     <section>
       @for (article of articles(); track article.id) {
         <app-news-item
+          (linkRead)="readTheArticle($event)"
           [articleToDisplay]="article"
           [headerText]="preferredHeader()"
         />
@@ -50,4 +51,8 @@ export class NewsListComponent {
       linkSlug: 'Read about Angular Signals',
     },
   ]);
+
+  readTheArticle(article: NewsArticle) {
+    console.log(article);
+  }
 }

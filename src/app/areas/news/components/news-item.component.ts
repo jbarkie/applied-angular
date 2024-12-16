@@ -1,4 +1,9 @@
-import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  input,
+  output,
+} from '@angular/core';
 import { NewsArticle } from '../types';
 
 @Component({
@@ -10,15 +15,21 @@ import { NewsArticle } from '../types';
     @let article = articleToDisplay();
     <article class="card bg-base-100 shadow-xl">
       <div class="card-body">
-        <h2 class="card-title">{{ article.title }}</h2>
+        <h2 [title]="article.datePublished" class="card-title">
+          {{ article.title }}
+        </h2>
         <p>{{ article.shortDescription }}</p>
         <p>
           <small>{{ article.datePublished }}</small>
         </p>
         <div class="card-actions justify-end">
-          <a class="btn btn-primary" [href]="article.link" target="_blank">{{
-            article.linkSlug
-          }}</a>
+          <a
+            (click)="linkRead.emit(article)"
+            class="btn btn-primary"
+            [href]="article.link"
+            target="_blank"
+            >{{ article.linkSlug }}</a
+          >
         </div>
       </div>
     </article>
@@ -28,4 +39,6 @@ import { NewsArticle } from '../types';
 export class NewsItemComponent {
   articleToDisplay = input.required<NewsArticle>();
   headerText = input('Default header');
+
+  linkRead = output<NewsArticle>();
 }
