@@ -3,8 +3,11 @@ import {
   ChangeDetectionStrategy,
   input,
   output,
+  signal,
+  effect,
 } from '@angular/core';
 import { NewsArticle } from '../types';
+import { formatDistanceToNow } from 'date-fns';
 
 @Component({
   selector: 'app-news-item',
@@ -20,7 +23,7 @@ import { NewsArticle } from '../types';
         </h2>
         <p>{{ article.shortDescription }}</p>
         <p>
-          <small>{{ article.datePublished }}</small>
+          <small>This article was posted {{ relativeDate() }} ago.</small>
         </p>
         <div class="card-actions justify-end">
           <a
@@ -40,5 +43,17 @@ export class NewsItemComponent {
   articleToDisplay = input.required<NewsArticle>();
   headerText = input('Default header');
 
+  relativeDate = signal('...');
   linkRead = output<NewsArticle>();
+
+  constructor() {
+    effect(() => {
+      const intervalId = setInterval(() => {
+        this.relativeDate.set(
+          formatDistanceToNow(new Date(this.articleToDisplay().datePublished)),
+        );
+      }, 1000);
+      return () => clearInterval(intervalId);
+    });
+  }
 }
