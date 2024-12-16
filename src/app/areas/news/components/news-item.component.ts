@@ -48,12 +48,14 @@ export class NewsItemComponent {
 
   constructor() {
     effect(() => {
+      // effect runs in the background
+      // effects are "side effects" - not like "special effects"
       const intervalId = setInterval(() => {
         this.relativeDate.set(
           formatDistanceToNow(new Date(this.articleToDisplay().datePublished)),
         );
       }, 1000);
-      return () => clearInterval(intervalId);
+      return () => clearInterval(intervalId); // optional - code to run when component is removed from DOM
     });
   }
 }
