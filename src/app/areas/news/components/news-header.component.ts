@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { RelativeTimeComponent } from '../../../shared/components/relative-time.component';
+import { RelativeTimeComponent } from '@shared';
 
 @Component({
   selector: 'app-news-header',

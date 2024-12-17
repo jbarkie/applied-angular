@@ -5,7 +5,7 @@ import {
   output,
 } from '@angular/core';
 import { NewsArticle } from '../../types';
-import { RelativeTimeComponent } from '../../../../shared/components/relative-time.component';
+import { RelativeTimeComponent } from '@shared';
 
 @Component({
   selector: 'app-news-item',
