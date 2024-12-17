@@ -5,7 +5,7 @@ import {
   computed,
 } from '@angular/core';
 import { NewsArticle } from '../types';
-import { NewsItemComponent } from './news-item.component';
+import { NewsItemComponent } from './news-item/news-item.component';
 
 @Component({
   selector: 'app-news-list',
