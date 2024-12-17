@@ -21,7 +21,7 @@ import { NewsItemComponent } from './news-item.component';
       <p>Read some stuff!</p>
     }
     <section>
-      @for (article of articles.value; track article.id) {
+      @for (article of articles.value(); track article.id) {
         <app-news-item
           (linkRead)="readTheArticle($event)"
           [articleToDisplay]="article"
