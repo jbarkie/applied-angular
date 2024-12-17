@@ -16,7 +16,7 @@ import { formatDistanceToNow } from 'date-fns';
 })
 export class RelativeTimeComponent {
   relativeDate = signal('');
-  suffix = signal(' ago');
+  suffix = input(' ago');
   date = input.required<string>();
   constructor() {
     effect(() => {

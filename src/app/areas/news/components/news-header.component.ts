@@ -8,7 +8,7 @@ import { RelativeTimeComponent } from '@shared';
   template: `
     <div>
       <h2>The News That's Fit To Print</h2>
-      <p>You loaded this <app-relative-time [date]="now()" suffix="Ago" /></p>
+      <p>You loaded this <app-relative-time [date]="now()" suffix=" Ago" /></p>
     </div>
   `,
   styles: ``,
