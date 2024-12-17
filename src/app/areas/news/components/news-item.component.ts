@@ -4,7 +4,7 @@ import {
   input,
   output,
 } from '@angular/core';
-import { NewsArticle } from '../../types';
+import { NewsArticle } from '../types';
 import { RelativeTimeComponent } from '@shared';
 
 @Component({
