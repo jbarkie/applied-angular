@@ -1,18 +1,16 @@
 import {
-  Component,
   ChangeDetectionStrategy,
+  Component,
   input,
   output,
-  signal,
-  effect,
 } from '@angular/core';
-import { NewsArticle } from '../types';
-import { formatDistanceToNow } from 'date-fns';
+import { NewsArticle } from '../../types';
+import { RelativeTimeComponent } from '../../shared/relative-time.component';
 
 @Component({
   selector: 'app-news-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [RelativeTimeComponent],
   template: `
     <p>{{ headerText() }}</p>
     @let article = articleToDisplay();
@@ -23,7 +21,10 @@ import { formatDistanceToNow } from 'date-fns';
         </h2>
         <p>{{ article.shortDescription }}</p>
         <p>
-          <small>This article was posted {{ relativeDate() }} ago.</small>
+          <small
+            >This article was posted
+            <app-news-item-relative-time [date]="article.datePublished" />
+          </small>
         </p>
         <div class="card-actions justify-end">
           <a
@@ -43,19 +44,5 @@ export class NewsItemComponent {
   articleToDisplay = input.required<NewsArticle>();
   headerText = input('Default header');
 
-  relativeDate = signal('...');
   linkRead = output<NewsArticle>();
-
-  constructor() {
-    effect(() => {
-      // effect runs in the background
-      // effects are "side effects" - not like "special effects"
-      const intervalId = setInterval(() => {
-        this.relativeDate.set(
-          formatDistanceToNow(new Date(this.articleToDisplay().datePublished)),
-        );
-      }, 1000);
-      return () => clearInterval(intervalId); // optional - code to run when component is removed from DOM
-    });
-  }
 }
