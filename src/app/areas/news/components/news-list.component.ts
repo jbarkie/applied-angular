@@ -1,10 +1,11 @@
 import {
-  Component,
   ChangeDetectionStrategy,
-  signal,
-  computed,
+  Component,
+  inject,
   resource,
+  signal,
 } from '@angular/core';
+import { ReadArticleStore } from '../services/read-articles.store';
 import { NewsArticle } from '../types';
 import { NewsItemComponent } from './news-item.component';
 
@@ -13,13 +14,6 @@ import { NewsItemComponent } from './news-item.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NewsItemComponent],
   template: `
-    @if (readArticleCount() !== 0) {
-      <div>
-        <p>You've read {{ readArticleCount() }} articles!</p>
-      </div>
-    } @else {
-      <p>Read some stuff!</p>
-    }
     <section>
       @if (articles.error()) {
         <p>Error loading data.</p>
@@ -29,9 +23,8 @@ import { NewsItemComponent } from './news-item.component';
       } @else {
         @for (article of articles.value(); track article.id) {
           <app-news-item
-            (linkRead)="readTheArticle($event)"
+            (linkRead)="store.addArticle($event)"
             [articleToDisplay]="article"
-            [headerText]="preferredHeader()"
           />
         } @empty {
           <p>No news! Check back later.</p>
@@ -43,16 +36,13 @@ import { NewsItemComponent } from './news-item.component';
 })
 export class NewsListComponent {
   preferredHeader = signal('Preferred header');
+
+  store = inject(ReadArticleStore);
+
   articles = resource<NewsArticle[], unknown>({
     loader: () =>
       fetch('http://fake-news.some-fake-server.com/news-feed').then((r) =>
         r.json(),
       ),
   });
-
-  readArticles = signal<NewsArticle[]>([]);
-  readArticleCount = computed(() => this.readArticles().length);
-  readTheArticle(article: NewsArticle) {
-    this.readArticles.update((a) => [article, ...a]);
-  }
 }
