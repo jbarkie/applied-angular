@@ -5,7 +5,7 @@ import {
   output,
 } from '@angular/core';
 import { NewsArticle } from '../../types';
-import { RelativeTimeComponent } from '../../shared/relative-time.component';
+import { RelativeTimeComponent } from '../../../../shared/components/relative-time.component';
 
 @Component({
   selector: 'app-news-item',
@@ -23,7 +23,7 @@ import { RelativeTimeComponent } from '../../shared/relative-time.component';
         <p>
           <small
             >This article was posted
-            <app-news-relative-time [date]="article.datePublished" />
+            <app-relative-time [date]="article.datePublished" />
           </small>
         </p>
         <div class="card-actions justify-end">
