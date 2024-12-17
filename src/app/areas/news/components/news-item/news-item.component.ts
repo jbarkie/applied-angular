@@ -23,7 +23,7 @@ import { RelativeTimeComponent } from '../../shared/relative-time.component';
         <p>
           <small
             >This article was posted
-            <app-news-item-relative-time [date]="article.datePublished" />
+            <app-news-relative-time [date]="article.datePublished" />
           </small>
         </p>
         <div class="card-actions justify-end">

@@ -8,7 +8,7 @@ import {
 import { formatDistanceToNow } from 'date-fns';
 
 @Component({
-  selector: 'app-news-item-relative-time',
+  selector: 'app-news-relative-time',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
   template: ` <span>{{ relativeDate() }}</span> `,
