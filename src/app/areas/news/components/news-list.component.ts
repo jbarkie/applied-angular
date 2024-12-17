@@ -21,6 +21,9 @@ import { NewsItemComponent } from './news-item.component';
       <p>Read some stuff!</p>
     }
     <section>
+      @if (articles.error()) {
+        <p>Error loading data.</p>
+      }
       @if (articles.isLoading()) {
         <span class="loading loading-spinner text-primary"></span>
       } @else {
