@@ -21,14 +21,18 @@ import { NewsItemComponent } from './news-item.component';
       <p>Read some stuff!</p>
     }
     <section>
-      @for (article of articles.value(); track article.id) {
-        <app-news-item
-          (linkRead)="readTheArticle($event)"
-          [articleToDisplay]="article"
-          [headerText]="preferredHeader()"
-        />
-      } @empty {
-        <p>No news! Check back later.</p>
+      @if (articles.isLoading()) {
+        <span class="loading loading-spinner text-primary"></span>
+      } @else {
+        @for (article of articles.value(); track article.id) {
+          <app-news-item
+            (linkRead)="readTheArticle($event)"
+            [articleToDisplay]="article"
+            [headerText]="preferredHeader()"
+          />
+        } @empty {
+          <p>No news! Check back later.</p>
+        }
       }
     </section>
   `,
