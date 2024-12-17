@@ -12,7 +12,6 @@ import { RelativeTimeComponent } from '@shared';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RelativeTimeComponent],
   template: `
-    <p>{{ headerText() }}</p>
     @let article = articleToDisplay();
     <article class="card bg-base-100 shadow-xl">
       <div class="card-body">
@@ -42,7 +41,5 @@ import { RelativeTimeComponent } from '@shared';
 })
 export class NewsItemComponent {
   articleToDisplay = input.required<NewsArticle>();
-  headerText = input('Default header');
-
   linkRead = output<NewsArticle>();
 }
