@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { RelativeTimeComponent } from '../shared/relative-time.component';
+import { RelativeTimeComponent } from '../../../shared/components/relative-time.component';
 
 @Component({
   selector: 'app-news-header',
@@ -8,7 +8,7 @@ import { RelativeTimeComponent } from '../shared/relative-time.component';
   template: `
     <div>
       <h2>The News That's Fit To Print</h2>
-      <p>You loaded this <app-news-relative-time [date]="now()" /></p>
+      <p>You loaded this <app-relative-time [date]="now()" suffix="Ago" /></p>
     </div>
   `,
   styles: ``,
