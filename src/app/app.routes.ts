@@ -6,6 +6,11 @@ import { HistoryComponent } from './areas/news/components/history.component';
 
 export const routes: Routes = [
   {
+    path: 'golf',
+    loadChildren: () =>
+      import('./areas/golf/golf.routes').then((r) => r.GOLF_ROUTES),
+  },
+  {
     path: 'news',
     providers: [ReadArticleStore],
     component: NewsComponent,
