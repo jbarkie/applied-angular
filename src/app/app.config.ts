@@ -8,6 +8,7 @@ import {
 
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
+import { FeaturesService } from '@shared';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,5 +19,6 @@ export const appConfig: ApplicationConfig = {
       withPreloading(PreloadAllModules),
     ),
     provideHttpClient(),
+    FeaturesService,
   ],
 };
