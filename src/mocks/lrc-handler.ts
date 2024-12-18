@@ -9,6 +9,14 @@ const fakeLinks = [
     datePosted: '2024-12-18',
     postedBy: 'Jeff',
   },
+  {
+    id: '2',
+    name: 'Mozilla Developer Network',
+    description: 'Good stuff here',
+    link: 'https://www.developer.mozilla.org/',
+    datePosted: '2024-12-18',
+    postedBy: 'Bob',
+  },
 ];
 
 export const lrcHandlers = [
