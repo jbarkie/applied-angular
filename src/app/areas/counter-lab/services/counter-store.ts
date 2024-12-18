@@ -38,14 +38,7 @@ export const CounterStore = signalStore(
     return {
       byValues: computed(() => BY_VALUES),
       disabled: computed(() => store.currentCount() - store.countBy() < 0),
-      fizzBuzz: computed(() => {
-        if (store.currentCount() === 0) return '';
-        if (store.currentCount() % 3 === 0 && store.currentCount() % 5 === 0)
-          return 'FizzBuzz';
-        else if (store.currentCount() % 3 === 0) return 'Fizz';
-        else if (store.currentCount() % 5 === 0) return 'Buzz';
-        else return '';
-      }),
+      fizzBuzz: computed(() => isFizzBuzz(store.currentCount())),
     };
   }),
   withHooks({
@@ -62,3 +55,11 @@ export const CounterStore = signalStore(
     },
   }),
 );
+
+function isFizzBuzz(count: number): '' | 'Fizz' | 'Buzz' | 'FizzBuzz' {
+  if (count === 0) return '';
+  else if (count % 3 === 0 && count % 5 === 0) return 'FizzBuzz';
+  else if (count % 3 === 0) return 'Fizz';
+  else if (count % 5 === 0) return 'Buzz';
+  else return '';
+}
