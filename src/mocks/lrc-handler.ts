@@ -5,7 +5,7 @@ const fakeLinks = [
     id: '1',
     name: 'TypeScript Handbook',
     description: 'The TypeScript Language Handbook',
-    link: '',
+    link: 'https://www.typescriptlang.org/docs/handbook/intro.html',
     datePosted: '2024-12-18',
     postedBy: 'Jeff',
   },
