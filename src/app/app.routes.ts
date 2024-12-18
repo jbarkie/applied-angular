@@ -6,6 +6,11 @@ import { HistoryComponent } from './areas/news/components/history.component';
 
 export const routes: Routes = [
   {
+    path: 'lrc',
+    loadChildren: () =>
+      import('./areas/lrc/lrc.routes').then((r) => r.LRC_ROUTES),
+  },
+  {
     path: 'counter',
     loadChildren: () =>
       import('./areas/counter-lab/counter.routes').then(
