@@ -48,4 +48,17 @@ export const CounterStore = signalStore(
       }),
     };
   }),
+  withHooks({
+    onInit(store) {
+      const saved = localStorage.getItem('counter');
+      if (saved !== null) {
+        const state = JSON.parse(saved) as unknown as counterState;
+        patchState(store, state);
+      }
+      watchState(store, (state) => {
+        const savedState = JSON.stringify(state);
+        localStorage.setItem('counter', savedState);
+      });
+    },
+  }),
 );
