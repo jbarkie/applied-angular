@@ -18,8 +18,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       ></textarea>
     </div>
     <div class="form-control">
-      <label for="name" class="label">URL</label>
-      <input name="name" type="url" class="input input-primary" />
+      <label for="link" class="label">URL</label>
+      <input name="link" type="url" class="input input-primary" />
     </div>
     <button type="submit" class="btn btn-primary">Add Link</button>
   </form>`,
