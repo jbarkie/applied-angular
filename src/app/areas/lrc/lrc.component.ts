@@ -1,16 +1,20 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { EntryComponent } from './components/entry.component';
 import { ListComponent } from './components/list.component';
 
 @Component({
   selector: 'app-lrc',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [EntryComponent, ListComponent],
+  imports: [ListComponent, EntryComponent],
   template: `
-    <p>LRC stuff here</p>
-    <div class="flex">
-      <app-lrc-list />
-      <app-lrc-entry />
+    <p>LRC Stuff Goes Here</p>
+    <div class="flex gap-4">
+      <div class="w-1/2">
+        <app-lrc-list />
+      </div>
+      <div class="w-1/2">
+        <app-lrc-entry />
+      </div>
     </div>
   `,
   styles: ``,
