@@ -32,4 +32,20 @@ export const lrcHandlers = [
     await delay();
     return HttpResponse.json(fakeLinks);
   }),
+  http.post('/api/posts', async ({ request }) => {
+    await delay();
+    const body = (await request.json()) as unknown as {
+      name: string;
+      description: string;
+      link: string;
+    };
+    const from = 'Joe';
+    const newPost = {
+      ...body,
+      id: crypto.randomUUID(),
+      postedBy: from,
+      datePosted: new Date().toISOString(),
+    };
+    return HttpResponse.json(newPost);
+  }),
 ];
