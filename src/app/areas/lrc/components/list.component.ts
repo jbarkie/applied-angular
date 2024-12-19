@@ -26,7 +26,9 @@ import { PostsStore } from '../services/post-store';
         <div class=" card bg-base-200 shadow-xl">
           <div class="card-body">
             <p class="card-title uppercase font-black">
-              {{ post.name }}
+              <a class="link" [routerLink]="['details', post.id]">{{
+                post.name
+              }}</a>
             </p>
 
             <p>
