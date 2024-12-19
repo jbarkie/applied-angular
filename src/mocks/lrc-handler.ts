@@ -1,4 +1,4 @@
-import { http, HttpResponse, delay } from 'msw';
+import { http, delay, HttpResponse } from 'msw';
 
 const fakeLinks = [
   {
@@ -12,10 +12,18 @@ const fakeLinks = [
   {
     id: '2',
     name: 'Mozilla Developer Network',
-    description: 'Good stuff here',
-    link: 'https://www.developer.mozilla.org/',
-    datePosted: '2024-12-18',
-    postedBy: 'Bob',
+    description: 'Good Documentation and Stuff',
+    link: 'https://developer.mozilla.org/en-US/',
+    datePosted: '2024-11-13',
+    postedBy: 'Carla',
+  },
+  {
+    id: '3',
+    name: 'Hypertheory',
+    description: 'Training ',
+    link: 'https://www.hypertheory.com',
+    datePosted: '2023-04-10',
+    postedBy: 'Jeff',
   },
 ];
 
