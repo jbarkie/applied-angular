@@ -8,3 +8,8 @@ export type PostApiResponseItem = {
 };
 
 export type PostApiResponse = PostApiResponseItem[];
+
+export type PostCreateModel = Pick<
+  PostApiResponseItem,
+  'name' | 'description' | 'link'
+>;
